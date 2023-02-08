@@ -1,11 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import { CalendarApp } from './CalendarApp'
-import './styles.css'
+import { AppRouter } from './router/AppRouter';
+import { BrowserRouter } from 'react-router-dom';
+import './styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CalendarApp />
-  </React.StrictMode>,
-)
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  </React.StrictMode>
+);
