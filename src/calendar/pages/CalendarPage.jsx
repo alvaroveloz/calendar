@@ -6,21 +6,15 @@ import { addHours } from 'date-fns';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { localizer } from '../../helpers';
 import { useUiStore } from '../../hooks';
+import { useCalendarStore } from '../../hooks/useCalendarStore';
 
 
-const myEvents = [{
-  title: 'React course',
-  start: new Date(),
-  end: addHours(new Date(), 2),
-  user: {
-    id: 'ABCDEFG',
-    name: 'Alvaro Veloz',
-  }
-}];
+
 
 export const CalendarPage = () => {
 
   const { openDateModal } = useUiStore();
+  const { events: myEvents } = useCalendarStore();
 
   const eventStyleGetter = ( event, start, end, isSelected ) => {
     // console.log(event, start, end, isSelected);
