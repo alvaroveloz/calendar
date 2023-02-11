@@ -5,6 +5,7 @@ import { addHours } from 'date-fns';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { localizer } from '../../helpers';
+import { useUiStore } from '../../hooks';
 
 
 const myEvents = [{
@@ -18,6 +19,8 @@ const myEvents = [{
 }];
 
 export const CalendarPage = () => {
+
+  const { openDateModal } = useUiStore();
 
   const eventStyleGetter = ( event, start, end, isSelected ) => {
     // console.log(event, start, end, isSelected);
@@ -33,7 +36,7 @@ export const CalendarPage = () => {
   }
 
   const onDoubleClick = (event ) => {
-    console.log({ doubleClick: event });
+    openDateModal();
   }
 
   const onSelect = (event) => {
