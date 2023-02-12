@@ -1,20 +1,14 @@
-import { CalendarEvent, CalendarModal, NavBar } from '../components';
+import { CalendarEvent, CalendarModal, FabAddNewEvent, NavBar } from '../components';
+import { localizer } from '../../helpers';
+import { useUiStore, useCalendarStore } from '../../hooks';
 
 import { Calendar } from 'react-big-calendar';
-import { addHours } from 'date-fns';
-
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { localizer } from '../../helpers';
-import { useUiStore } from '../../hooks';
-import { useCalendarStore } from '../../hooks/useCalendarStore';
-
-
-
 
 export const CalendarPage = () => {
 
   const { openDateModal } = useUiStore();
-  const { events: myEvents } = useCalendarStore();
+  const { events: myEvents, onActiveEvent } = useCalendarStore();
 
   const eventStyleGetter = ( event, start, end, isSelected ) => {
     // console.log(event, start, end, isSelected);
@@ -35,6 +29,7 @@ export const CalendarPage = () => {
 
   const onSelect = (event) => {
     console.log({ select:  event });
+    onActiveEvent(event);
   };
 
   const onView = (event) => {
@@ -65,6 +60,8 @@ export const CalendarPage = () => {
       />
 
       <CalendarModal />
+
+      <FabAddNewEvent />
     </>
   );
 };
