@@ -4,6 +4,7 @@ import { useUiStore, useCalendarStore } from '../../hooks';
 
 import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { FabDeleteEvent } from '../components/FabDeleteEvent';
 
 export const CalendarPage = () => {
 
@@ -62,6 +63,7 @@ export const CalendarPage = () => {
       <CalendarModal />
 
       <FabAddNewEvent />
+      <FabDeleteEvent />
     </>
   );
 };
