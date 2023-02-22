@@ -18,8 +18,7 @@ const registerFormFields = {
 };
 
 export const LoginPage = () => {
-
-  const { startLogin, errorMessage } = useAuthStore();
+  const { startLogin, errorMessage, startRegister } = useAuthStore();
 
   const {
     loginEmail,
@@ -41,22 +40,22 @@ export const LoginPage = () => {
 
   const registerSubmit = (event) => {
     event.preventDefault();
-    console.log({
-      registerName,
-      registerEmail,
-      registerPassword,
-      registerPasswordRepeat,
+    if (registerPassword !== registerPasswordRepeat) {
+      Swal.fire('Wrong register', 'Passwords do not match', 'error');
+      return;
+    }
+    startRegister({
+      name: registerName,
+      email: registerEmail,
+      password: registerPassword,
     });
   };
 
-
   useEffect(() => {
-  if (errorMessage !== undefined ) {
-    Swal.fire('Authentication error', errorMessage, 'error');
-  }  
-      
-  }, [ errorMessage ])
-  
+    if (errorMessage !== undefined) {
+      Swal.fire('Authentication error', errorMessage, 'error');
+    }
+  }, [errorMessage]);
 
   return (
     <div className='container login-container'>
