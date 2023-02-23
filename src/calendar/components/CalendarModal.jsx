@@ -80,8 +80,7 @@ useEffect(() => {
       return;
     }
     
-    console.log(formValues);
-
+    
     // call hook to save
     startSavingEvent(formValues);
     setFormSubmitted(false);

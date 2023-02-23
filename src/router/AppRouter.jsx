@@ -12,13 +12,11 @@ export const AppRouter = () => {
         checkAuthToken;
   }, [])
   
-  console.log(authStatus)
-
+  
   if (authStatus === 'checking') {
     return (<h3>Loading...</h3>)
   }
-
-  // const authStatus = 'not-authenticated';
+ 
 
   return (
     <Routes>

@@ -26,7 +26,7 @@ export const CalendarPage = () => {
 
   const eventStyleGetter = (event, start, end, isSelected) => {
     
-    const isMyEvent = (user.uid === event.user.uid);
+    const isMyEvent = (user.uid === event.user.uid) || (user.uid === event.user._id );
 
     const style = {
       backgroundColor: isMyEvent ? '#9F33FF': '#465660',
@@ -47,7 +47,8 @@ export const CalendarPage = () => {
   };
 
   const onView = (event) => {
-    console.log({ view: event });
+    // console.log({ view: event });
+    return ;
   };
 
   useEffect(() => {
