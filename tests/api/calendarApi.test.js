@@ -1,4 +1,5 @@
 import calendarApi from '../../src/api/calendarApi'
+import { testUserCredentials } from '../__fixtures__/testUser';
 
 describe('CalendarApi Tests', ()=>{
 
@@ -13,7 +14,7 @@ describe('CalendarApi Tests', ()=>{
         
         const token = 'XYZ-123456789-ABCDE';
         localStorage.setItem('token', token);
-        const res = await calendarApi.post('/auth', { email: 'test@gmail.com', password: '123456789' });
+        const res = await calendarApi.post('/auth', testUserCredentials);
         expect(res.config.headers['x-token']).toBe(token);
 
     })
