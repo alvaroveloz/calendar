@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useUiStore } from '../../hooks';
 import { useCalendarStore } from '../../hooks/useCalendarStore';
+import { getEnvVariables } from '../../helpers';
 
 const customStyles = {
   content: {
@@ -19,7 +20,9 @@ const customStyles = {
   },
 };
 
-ReactModal.setAppElement('#root');
+if (getEnvVariables().VITE_MODE !== 'test') {
+  ReactModal.setAppElement('#root');  
+}
 
 const formData = {
   start: new Date(),
